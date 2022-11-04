@@ -2,3 +2,17 @@ installation
 $ curl -fsSL https://get.docker.com -o get-docker.sh 
 $ sudo sh get-docker.sh 
 
+FROM ubuntu:latest # Adding a layer of Ubuntu as a base image 
+MAINTAINER 
+"BUSHRA" # Adding an author
+RUN apt update –y 
+# Adding a layer of ‘apt-update’ in our 
+image
+RUN apt install nginx –
+y 
+# Adding a layer of ‘nginx’ webserver in our 
+image
+EXPOSE 80 # Exposing port 80 of web server
+COPY index.html /var/www/html/index.html # Hosting our web page / 
+application CMD ["nginx", "-g", "daemon off;"] # Starting nginx 
+webserver in foreground
